@@ -1,0 +1,64 @@
+# config/config.yaml
+
+news_sources:
+  economic_times:
+    base_url: "https://economictimes.indiatimes.com"
+    sections:
+      - "/markets/stocks/news"
+      - "/news/economy/policy"
+    scrape_enabled: true
+    requires_selenium: false
+
+  livemint:
+    base_url: "https://www.livemint.com"
+    sections:
+      - "/market/stock-market-news"
+      - "/news/india"
+    scrape_enabled: true
+    requires_selenium: false
+  
+  business_standard:
+    base_url: "https://www.business-standard.com"
+    sections:
+      - "/markets"
+      - "/economy-policy"
+    scrape_enabled: true
+    requires_selenium: false
+
+  moneycontrol:
+    base_url: "https://www.moneycontrol.com"
+    sections:
+      - "/news/business/markets"
+      - "/news/business/economy"
+    scrape_enabled: true
+    requires_selenium: false
+
+llm:
+  # Use the free, local model provider
+  provider: "ollama"
+  # Use the small model that fits in your computer's memory
+  model: "tinyllama"
+  temperature: 0.3
+  max_tokens: 1500
+
+embeddings:
+  model: "sentence-transformers/all-MiniLM-L6-v2"
+  dimension: 384
+
+vector_db:
+  type: "chromadb"
+  persist_directory: "./chroma_db"
+  collection_name: "financial_news_v4"
+
+chunking:
+  strategy: "semantic"
+  chunk_size: 800
+  chunk_overlap: 100
+
+rag:
+  retrieval_type: "mmr"
+  # Re-ranker is disabled as it requires a paid API key
+  use_reranker: false
+  top_k: 5
+  reranker_top_n: 3
+

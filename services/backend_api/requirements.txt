@@ -1,0 +1,18 @@
+# ---- LangChain + Ollama Stack ----
+langchain==0.2.12
+langchain-core==0.2.36
+langchain-community==0.2.11
+langchain-huggingface==0.0.3
+langchain-openai==0.1.15
+langchain-ollama==0.1.2
+
+# ---- Web + Infra ----
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-dotenv==1.0.1
+pyyaml==6.0.1
+
+# ---- Vector Store + Embeddings ----
+chromadb==0.5.0
+sentence-transformers==2.7.0
+torch==2.8.0+cpu

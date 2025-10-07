@@ -1,0 +1,28 @@
+services:
+  # The FastAPI Backend Service
+  backend:
+    build:
+      context: ./services/backend_api
+      dockerfile: Dockerfile
+    container_name: rag_backend
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount local directories into the container at the correct path
+      - ./chroma_db:/home/app/chroma_db
+      - ./config:/home/app/config
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  # The Streamlit Frontend Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rag_frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend  # Ensures the backend starts before the frontend
+    restart: unless-stopped
