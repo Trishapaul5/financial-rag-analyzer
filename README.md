@@ -63,7 +63,7 @@ Ollama installed and running locally
 
 
 1. Clone the Repository
-git clone https://github.com/yourusername/financial-rag-analyzer.git
+git clone https://github.com/Trishapaul5/financial-rag-analyzer.git
 cd financial-rag-analyzer
 
 2. Prepare the Local LLM
